@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+}
+
+#container {
+  max-width: 1200px;
+  margin: auto;
+  border: 2px solid blue;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+#menu__lateral {
+  border: 2px solid red;
+}
+
+#scroll-list {
+  width: 200px; /* Largura desejada da lista */
+  height: 300px; /* Altura desejada da lista */
+  overflow-y: scroll; /* Adiciona uma barra de rolagem vertical quando necessário */
+  border: 1px solid #ccc; /* Adiciona uma borda para visualização */
+}
