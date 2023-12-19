@@ -1,22 +1,92 @@
 * {
   margin: 0;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+
+ul,
+li,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #121111;
 }
 
 #container {
   max-width: 1200px;
   margin: auto;
-  border: 2px solid blue;
+  background-color: #191919;
   display: grid;
   grid-template-columns: 1fr 5fr;
+  margin-top: 32px;
+  border-radius: 6px;
 }
 
+/* MENU LATERAL */
 #menu__lateral {
-  border: 2px solid red;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: #2a2f48;
+  border-radius: 6px 0 0 6px;
 }
 
-#scroll-list {
-  width: 200px; /* Largura desejada da lista */
-  height: 300px; /* Altura desejada da lista */
-  overflow-y: scroll; /* Adiciona uma barra de rolagem vertical quando necessário */
-  border: 1px solid #ccc; /* Adiciona uma borda para visualização */
+#logo {
+  max-width: 100%;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  margin-top: 32px;
+}
+
+#menu li {
+  padding: 0;
+}
+
+/* MAIN - FORMULARIO */
+#formulario--container {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#formulario {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.item__form input {
+  padding: 8px;
+  margin-top: 8px;
+}
+
+#btn__form {
+  margin-top: 32px;
+  padding: 20px;
+  cursor: pointer;
+  background: none;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+#btn__form:hover {
+  background-color: #fff;
+  color: #191919;
+  transition: 0.2s ease-in-out;
 }

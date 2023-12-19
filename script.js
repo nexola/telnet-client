@@ -18,19 +18,17 @@ const inputs = [
   inputIpgateway,
 ];
 
+const credenciais = {};
+
 btnForm.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const credenciais = {
-    hostname: inputHostname.value,
-    vlan: inputVlan.value,
-    interface: inputInterface.value,
-    switchport: inputSwitchport.value,
-    access: inputAccess.value,
-    ipGateway: inputIpgateway.value,
-  };
-
-  console.log(credenciais);
+  credenciais.hostname = inputHostname.value;
+  credenciais.vlan = inputVlan.value;
+  credenciais.interface = inputInterface.value;
+  credenciais.switchport = inputSwitchport.value;
+  credenciais.access = inputAccess.value;
+  credenciais.ipGateway = inputIpgateway.value;
 
   inputs.forEach((input) => {
     input.value = null;

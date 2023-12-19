@@ -10,9 +10,9 @@
   <body>
     <div id="container">
       <header id="menu__lateral">
-        <div><img src="" alt="" />Logo</div>
+        <div id="logo"><img src="" alt="" />Logo</div>
         <nav>
-          <ul>
+          <ul id="menu">
             <li>Item 1</li>
             <li>Item 2</li>
             <li>Item 3</li>
@@ -21,27 +21,39 @@
         </nav>
       </header>
 
-      <main id="formulario">
+      <main id="formulario--container">
         <h2>Formulario</h2>
 
-        <form action="">
-          <label for="hostname">Hostname</label>
-          <input type="text" id="hostname" name="hostname" />
+        <form action="" id="formulario">
+          <div class="item__form">
+            <label for="hostname">Hostname</label>
+            <input type="text" id="hostname" name="hostname" />
+          </div>
 
-          <label for="vlan">Vlan ID</label>
-          <input type="text" id="vlan" name="vlan" />
+          <div class="item__form">
+            <label for="vlan">Vlan ID</label>
+            <input type="text" id="vlan" name="vlan" />
+          </div>
 
-          <label for="interface">Interface</label>
-          <input type="text" id="interface" name="interface" />
+          <div class="item__form">
+            <label for="interface">Interface</label>
+            <input type="text" id="interface" name="interface" />
+          </div>
 
-          <label for="switchport">Switchport</label>
-          <input type="text" id="switchport" name="switchport" />
+          <div class="item__form">
+            <label for="switchport">Switchport</label>
+            <input type="text" id="switchport" name="switchport" />
+          </div>
 
-          <label for="access">Access VLAN</label>
-          <input type="number" id="access" name="access" />
+          <div class="item__form">
+            <label for="access">Access VLAN</label>
+            <input type="number" id="access" name="access" />
+          </div>
 
-          <label for="ip-gateway">IP Gateway</label>
-          <input type="number" id="ip-gateway" name="ip-gateway" />
+          <div class="item__form">
+            <label for="ip-gateway">IP Gateway</label>
+            <input type="number" id="ip-gateway" name="ip-gateway" />
+          </div>
 
           <button id="btn__form">Enviar</button>
         </form>
