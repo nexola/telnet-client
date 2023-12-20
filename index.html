@@ -22,41 +22,245 @@
       </header>
 
       <main id="formulario--container">
-        <h2>Formulario</h2>
+        <section class="section__1 section__ativo" data-slide="1">
+          <h2>Conexão com o equipamento</h2>
 
-        <form action="" id="formulario">
-          <div class="item__form">
-            <label for="hostname">Hostname</label>
-            <input type="text" id="hostname" name="hostname" />
-          </div>
+          <form action="" class="formulario">
+            <div class="item__form">
+              <label for="conexao">Conexão:</label>
+              <select name="conexao" id="conexao" class="valor__input">
+                <option value="https">WEB (https)</option>
+                <option value="telnet">Telnet</option>
+                <option value="ssh">SSH</option>
+              </select>
+            </div>
 
-          <div class="item__form">
-            <label for="vlan">Vlan ID</label>
-            <input type="text" id="vlan" name="vlan" />
-          </div>
+            <div class="item__form">
+              <label for="ip">IP</label>
+              <input
+                min="0"
+                type="number"
+                oninput="this.value = Math.abs(this.value)"
+                id="ip"
+                name="ip"
+                class="valor__input"
+              />
+            </div>
 
-          <div class="item__form">
-            <label for="interface">Interface</label>
-            <input type="text" id="interface" name="interface" />
-          </div>
+            <div class="item__form">
+              <label for="porta">Porta</label>
+              <input
+                min="0"
+                type="number"
+                oninput="this.value = Math.abs(this.value)"
+                id="porta"
+                name="porta"
+                class="valor__input"
+              />
+            </div>
 
-          <div class="item__form">
-            <label for="switchport">Switchport</label>
-            <input type="text" id="switchport" name="switchport" />
-          </div>
+            <div class="item__form">
+              <label for="login">Login</label>
+              <input type="text" id="login" name="login" class="valor__input" />
+            </div>
 
-          <div class="item__form">
-            <label for="access">Access VLAN</label>
-            <input type="number" id="access" name="access" />
-          </div>
+            <div class="item__form">
+              <label for="senha">Senha</label>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                class="valor__input"
+              />
+            </div>
 
-          <div class="item__form">
-            <label for="ip-gateway">IP Gateway</label>
-            <input type="number" id="ip-gateway" name="ip-gateway" />
-          </div>
+            <button class="btn__form" class="btn__conectar">Conectar</button>
+          </form>
+        </section>
 
-          <button id="btn__form">Enviar</button>
-        </form>
+        <section class="section__2" data-slide="2">
+          <h2>Configurações gerais</h2>
+
+          <form action="" class="formulario">
+            <div class="item__form">
+              <label for="hostname">Hostname</label>
+              <input
+                type="text"
+                id="hostname"
+                name="hostname"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <label for="ip_gateway">IP Gateway</label>
+              <input
+                min="0"
+                type="number"
+                oninput="this.value = Math.abs(this.value)"
+                id="ip_gateway"
+                name="ip_gateway"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <label for="snmp-cm">SNMP - Server community</label>
+              <input
+                type="text"
+                id="snmp-cm"
+                name="snmp-cm"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <label for="snmp-ct">SNMP - Server contact</label>
+              <input
+                type="text"
+                id="snmp-ct"
+                name="snmp-ct"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <label for="snmp-lc">SNMP - Server location</label>
+              <input
+                type="text"
+                id="snmp-lc"
+                name="snmp-lc"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <label for="vlan">VLAN: Número</label>
+              <input
+                min="0"
+                type="number"
+                oninput="this.value = Math.abs(this.value)"
+                id="vlan"
+                name="vlan"
+                class="valor__input"
+              />
+            </div>
+
+            <button class="btn__form" class="btn__conectar">Conectar</button>
+          </form>
+        </section>
+
+        <section class="section__3" data-slide="3">
+          <h2>Configuração individual das portas</h2>
+
+          <form action="" class="formulario">
+            <div class="item__form">
+              <label for="interface">Interface</label>
+              <input
+                type="text"
+                id="interface"
+                name="interface"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <label for="desc">Descrição</label>
+              <input type="text" id="desc" name="desc" class="valor__input" />
+            </div>
+
+            <div class="item__form">
+              <label for="switch_mode">Switchport Mode</label>
+              <input
+                type="text"
+                id="switch_mode"
+                name="switch_mode"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <label for="switch_vlan">Switchport Vlan</label>
+              <input
+                min="0"
+                type="number"
+                oninput="this.value = Math.abs(this.value)"
+                id="switch_vlan"
+                name="switch_vlan"
+                class="valor__input"
+              />
+            </div>
+
+            <button class="btn__form" class="btn__conectar">Conectar</button>
+          </form>
+        </section>
+
+        <section class="section__4" data-slide="4">
+          <h2>Configuração de segurança e outros</h2>
+
+          <form action="" class="formulario">
+            <div class="item__form">
+              <label for="usuario">Usuário</label>
+              <input
+                type="text"
+                id="usuario"
+                name="usuario"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <label for="senha_seg">Senha</label>
+              <input
+                type="password"
+                id="senha_seg"
+                name="senha_seg"
+                class="valor__input"
+              />
+            </div>
+
+            <div class="item__form">
+              <input
+                type="radio"
+                id="habilitar_ssh"
+                name="aut_ssh"
+                value="habilitar_ssh"
+              />
+              <label for="habilitar_ssh">Habilitar</label>
+              <input
+                type="radio"
+                id="desabilitar_ssh"
+                name="aut_ssh"
+                value="desabilitar_ssh"
+              />
+              <label for="desabilitar_ssh">Desabilitar</label>
+            </div>
+
+            <div class="item__form">
+              <input
+                type="radio"
+                id="habilitar_telnet"
+                name="aut_tnt"
+                value="habilitar_telnet"
+              />
+              <label for="habilitar_telnet">Habilitar</label>
+              <input
+                type="radio"
+                id="desabilitar_telnet"
+                name="aut_tnt"
+                value="desabilitar_telnet"
+              />
+              <label for="desabilitar_telnet">Desabilitar</label>
+            </div>
+
+            <div class="item__form">
+              <label for="clock">Clock</label>
+              <input type="time" id="clock" name="clock" class="valor__input" />
+            </div>
+
+            <button class="btn__form" class="btn__conectar">Conectar</button>
+          </form>
+        </section>
       </main>
     </div>
 

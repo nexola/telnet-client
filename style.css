@@ -57,7 +57,7 @@ body {
   box-sizing: border-box;
 }
 
-#formulario {
+.formulario {
   margin-top: 32px;
   display: flex;
   flex-direction: column;
@@ -69,12 +69,14 @@ body {
   flex-direction: column;
 }
 
-.item__form input {
+.item__form input,
+select {
   padding: 8px;
   margin-top: 8px;
+  color: #191919;
 }
 
-#btn__form {
+.btn__form {
   margin-top: 32px;
   padding: 20px;
   cursor: pointer;
@@ -85,7 +87,7 @@ body {
   text-transform: uppercase;
 }
 
-#btn__form:hover {
+.btn__form:hover {
   background-color: #fff;
   color: #191919;
   transition: 0.2s ease-in-out;
