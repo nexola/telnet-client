@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Telnet client</title>
+    <link rel="shortcut icon" href="#">
   </head>
 
   <body>
@@ -12,11 +13,11 @@
       <header id="menu__lateral">
         <div id="logo"><img src="" alt="" />Logo</div>
         <nav>
-          <ul id="menu">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+          <ul id="menu--section">
+            <li><button data-slide="1">Equipamento</button></li>
+            <li><button data-slide="2">Geral</button></li>
+            <li><button data-slide="3">Individual</button></li>
+            <li><button data-slide="4">Segurança e outros</button></li>
           </ul>
         </nav>
       </header>
@@ -25,8 +26,7 @@
         <section class="section__1 section__ativo" data-slide="1">
           <h2>Conexão com o equipamento</h2>
 
-          <form action="" class="formulario">
-            <div class="item__form">
+            <div class="item__form" >
               <label for="conexao">Conexão:</label>
               <select name="conexao" id="conexao" class="valor__input">
                 <option value="https">WEB (https)</option>
@@ -74,7 +74,7 @@
               />
             </div>
 
-            <button class="btn__form" class="btn__conectar">Conectar</button>
+            <button class="btn__form" data-form="1">Conectar</button>
           </form>
         </section>
 
@@ -134,23 +134,26 @@
               />
             </div>
 
-            <div class="item__form">
-              <label for="vlan">VLAN: Número</label>
-              <input
-                min="0"
-                type="number"
-                oninput="this.value = Math.abs(this.value)"
-                id="vlan"
-                name="vlan"
-                class="valor__input"
-              />
+            <div class="item__form item__form--vlan">
+              <label for="vlan">VLAN</label>
+              <div class="item__vlan">
+                <input
+                  min="0"
+                  type="number"
+                  oninput="this.value = Math.abs(this.value)"
+                  id="vlan"
+                  name="vlan"
+                  class="valor__input"
+                />
+                <a href="./" id="add__vlan">+</a>
+              </div>
             </div>
 
-            <button class="btn__form" class="btn__conectar">Conectar</button>
+            <button class="btn__form" id="btn--2">Conectar</button>
           </form>
         </section>
 
-        <section class="section__3" data-slide="3">
+        <section class="section__3" data-form="2">
           <h2>Configuração individual das portas</h2>
 
           <form action="" class="formulario">
@@ -191,7 +194,7 @@
               />
             </div>
 
-            <button class="btn__form" class="btn__conectar">Conectar</button>
+            <button class="btn__form" data-form="3">Conectar</button>
           </form>
         </section>
 
@@ -258,12 +261,13 @@
               <input type="time" id="clock" name="clock" class="valor__input" />
             </div>
 
-            <button class="btn__form" class="btn__conectar">Conectar</button>
+            <button class="btn__form" data-form="4">Conectar</button>
           </form>
         </section>
       </main>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
+    
   </body>
 </html>
