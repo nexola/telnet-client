@@ -41,7 +41,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   margin-top: 32px;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
 input[type="number"]::-webkit-inner-spin-button {
@@ -66,6 +66,14 @@ input[type="number"] {
   padding: 0;
 }
 
+#menu-1 {
+  border-radius: 4px 0 0 0;
+}
+
+#menu-4 {
+  border-radius: 0 4px 0 0;
+}
+
 #menu--section button {
   background-color: var(--var-global);
   border-style: none;
@@ -85,6 +93,7 @@ input[type="number"] {
 #menu--section .btn__ativo {
   background-color: var(--var-primary-hover);
   transform: translateY(-12px);
+  border-radius: 4px;
 }
 
 /* MAIN - FORMULARIO */
@@ -166,7 +175,7 @@ select {
   cursor: pointer;
   background-color: var(--var-primary);
   border: 2px solid var(--var-global);
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 1.5rem;
   text-transform: uppercase;
   transition: 0.2s ease-in-out;
@@ -205,7 +214,7 @@ section {
 .remove__vlan {
   text-decoration: none;
   padding: 2px 6px;
-  border-radius: 6px;
+  border-radius: 4px;
   max-height: fit-content;
 }
 

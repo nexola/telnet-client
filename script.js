@@ -9,6 +9,9 @@ const itemVlan = document.querySelector(".item__vlan");
 const itemForm = document.querySelector(".item__form--vlan");
 const btnMenu = document.querySelectorAll("#menu--section button");
 
+let itensVlan = {};
+let entries = {};
+
 const init = function () {
   coletarValores(btnForm);
   mudarAba(sections, menuSection);
@@ -21,18 +24,28 @@ const zerarInputs = function () {
 };
 
 // Coletando valores dos inputs
-// Seção 1 / 2 / 3
 const coletarValores = function (listaBtn) {
-  let entries = {};
   listaBtn.forEach((btn) =>
     btn.addEventListener("click", function (e) {
+      console.log(entries);
+      console.log(itensVlan);
       e.preventDefault();
 
-      if (entries.length > 0) {
-        entries = {};
+      if (entries) {
+        for (const key in entries) {
+          delete entries[key];
+        }
       }
 
       const clicked = e.target;
+
+      const inputs = document.querySelectorAll(
+        `.section__${clicked.dataset.form} .valor__input`
+      );
+
+      inputs.forEach((i) => {
+        entries[`${i.id}`] = i.value;
+      });
 
       switch (clicked.getAttribute("id")) {
         case "btn__seg":
@@ -49,20 +62,17 @@ const coletarValores = function (listaBtn) {
           }
           break;
 
+        case "btn--2":
+          addVlan(itemVlan, inputVlan);
+          entries["vlan"] = itensVlan;
+
         default:
           break;
       }
-      const inputs = document.querySelectorAll(
-        `.section__${clicked.dataset.form} .valor__input`
-      );
 
-      inputs.forEach((i) => {
-        entries[`${i.id}`] = i.value;
-      });
       zerarInputs();
     })
   );
-  console.log(entries);
 };
 
 // Mudando aba
@@ -116,6 +126,7 @@ const addVlan = function (divInput, input) {
       console.log(itens);
       addHTMLVlan(input.value);
       input.value = null;
+      itensVlan = itens;
     }
   });
 
@@ -132,9 +143,14 @@ const addVlan = function (divInput, input) {
 
     itens.delete(divClicked.dataset.valor);
 
+    itensVlan = itens;
+
     divClicked.parentNode.removeChild(divClicked);
-    return itens;
   });
+
+  if (itens.size === 0) {
+    itensVlan = document.getElementById("vlan").value;
+  }
 };
 
 init();
