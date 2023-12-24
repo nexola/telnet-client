@@ -111,6 +111,21 @@ h2 {
   flex-direction: column;
 }
 
+.radio {
+  display: block;
+}
+
+.radio__options {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.radio__options input {
+  margin-left: 12px;
+  margin-top: 4px;
+}
+
 .item__form input,
 .item__form select {
   background-color: transparent;

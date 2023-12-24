@@ -209,38 +209,44 @@
               />
             </div>
 
-            <div class="item__form">
-              <input
-                type="radio"
-                id="habilitar_ssh"
-                name="aut_ssh"
-                value="habilitar_ssh"
-              />
-              <label for="habilitar_ssh">Habilitar</label>
-              <input
-                type="radio"
-                id="desabilitar_ssh"
-                name="aut_ssh"
-                value="desabilitar_ssh"
-              />
-              <label for="desabilitar_ssh">Desabilitar</label>
+            <div class="item__form radio">
+              <h4>SSH</h4>
+              <div class="radio__options">
+                <input
+                  type="radio"
+                  id="habilitar_ssh"
+                  name="aut_ssh"
+                  value="true"
+                />
+                <label for="habilitar_ssh">Habilitar</label>
+                <input
+                  type="radio"
+                  id="desabilitar_ssh"
+                  name="aut_ssh"
+                  value="false"
+                />
+                <label for="desabilitar_ssh">Desabilitar</label>
+              </div>
             </div>
 
-            <div class="item__form">
-              <input
-                type="radio"
-                id="habilitar_telnet"
-                name="aut_tnt"
-                value="habilitar_telnet"
-              />
-              <label for="habilitar_telnet">Habilitar</label>
-              <input
-                type="radio"
-                id="desabilitar_telnet"
-                name="aut_tnt"
-                value="desabilitar_telnet"
-              />
-              <label for="desabilitar_telnet">Desabilitar</label>
+            <div class="item__form radio">
+              <h4>Telnet</h4>
+              <div class="radio__options">
+                <input
+                  type="radio"
+                  id="habilitar_telnet"
+                  name="aut_tnt"
+                  value="true"
+                />
+                <label for="habilitar_telnet">Habilitar</label>
+                <input
+                  type="radio"
+                  id="desabilitar_telnet"
+                  name="aut_tnt"
+                  value="false"
+                />
+                <label for="desabilitar_telnet">Desabilitar</label>
+              </div>
             </div>
 
             <div class="item__form">
@@ -248,7 +254,9 @@
               <input type="time" id="clock" name="clock" class="valor__input" />
             </div>
 
-            <button class="btn__form" data-form="4">Conectar</button>
+            <button class="btn__form" id="btn__seg" data-form="4">
+              Conectar
+            </button>
           </form>
         </section>
       </main>

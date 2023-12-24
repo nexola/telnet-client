@@ -33,6 +33,25 @@ const coletarValores = function (listaBtn) {
       }
 
       const clicked = e.target;
+
+      switch (clicked.getAttribute("id")) {
+        case "btn__seg":
+          const radioSSH = document.querySelector(
+            "input[name='aut_ssh']:checked"
+          );
+          const radioTelnet = document.querySelector(
+            'input[name="aut_tnt"]:checked'
+          );
+
+          if (radioSSH && radioTelnet) {
+            entries[`${radioSSH.getAttribute("name")}`] = radioSSH.value;
+            entries[`${radioTelnet.getAttribute("name")}`] = radioTelnet.value;
+          }
+          break;
+
+        default:
+          break;
+      }
       const inputs = document.querySelectorAll(
         `.section__${clicked.dataset.form} .valor__input`
       );
@@ -43,6 +62,7 @@ const coletarValores = function (listaBtn) {
       zerarInputs();
     })
   );
+  console.log(entries);
 };
 
 // Mudando aba
