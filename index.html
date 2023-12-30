@@ -34,7 +34,7 @@
           <form action="" class="formulario">
             <div class="item__form">
               <label for="conexao">Conexão:</label>
-              <select name="conexao" id="conexao" class="valor__input">
+              <select required name="conexao" id="conexao" class="valor__input">
                 <option value="https">WEB (https)</option>
                 <option value="telnet">Telnet</option>
                 <option value="ssh">SSH</option>
@@ -43,12 +43,19 @@
 
             <div class="item__form">
               <label for="ip">IP</label>
-              <input type="number" id="ip" name="ip" class="valor__input" />
+              <input
+                required
+                type="number"
+                id="ip"
+                name="ip"
+                class="valor__input"
+              />
             </div>
 
             <div class="item__form">
               <label for="porta">Porta</label>
               <input
+                required
                 type="number"
                 id="porta"
                 name="porta"
@@ -64,6 +71,7 @@
             <div class="item__form">
               <label for="senha">Senha</label>
               <input
+                required
                 type="password"
                 id="senha"
                 name="senha"
@@ -82,6 +90,7 @@
             <div class="item__form">
               <label for="hostname">Hostname</label>
               <input
+                required
                 type="text"
                 id="hostname"
                 name="hostname"
@@ -92,6 +101,7 @@
             <div class="item__form">
               <label for="ip_gateway">IP Gateway</label>
               <input
+                required
                 type="number"
                 id="ip_gateway"
                 name="ip_gateway"
@@ -102,6 +112,7 @@
             <div class="item__form">
               <label for="snmp-cm">SNMP - Server community</label>
               <input
+                required
                 type="text"
                 id="snmp-cm"
                 name="snmp-cm"
@@ -112,6 +123,7 @@
             <div class="item__form">
               <label for="snmp-ct">SNMP - Server contact</label>
               <input
+                required
                 type="text"
                 id="snmp-ct"
                 name="snmp-ct"
@@ -122,6 +134,7 @@
             <div class="item__form">
               <label for="snmp-lc">SNMP - Server location</label>
               <input
+                required
                 type="text"
                 id="snmp-lc"
                 name="snmp-lc"
@@ -133,6 +146,7 @@
               <label for="vlan">VLAN</label>
               <div class="item__vlan">
                 <input
+                  required
                   type="number"
                   id="vlan"
                   name="vlan"
@@ -155,6 +169,7 @@
             <div class="item__form">
               <label for="interface">Interface</label>
               <input
+                required
                 type="text"
                 id="interface"
                 name="interface"
@@ -164,12 +179,19 @@
 
             <div class="item__form">
               <label for="desc">Descrição</label>
-              <input type="text" id="desc" name="desc" class="valor__input" />
+              <input
+                required
+                type="text"
+                id="desc"
+                name="desc"
+                class="valor__input"
+              />
             </div>
 
             <div class="item__form">
               <label for="switch_mode">Switchport Mode</label>
               <input
+                required
                 type="text"
                 id="switch_mode"
                 name="switch_mode"
@@ -180,6 +202,7 @@
             <div class="item__form">
               <label for="switch_vlan">Switchport Vlan</label>
               <input
+                required
                 type="number"
                 id="switch_vlan"
                 name="switch_vlan"
@@ -198,6 +221,7 @@
             <div class="item__form">
               <label for="usuario">Usuário</label>
               <input
+                required
                 type="text"
                 id="usuario"
                 name="usuario"
@@ -208,6 +232,7 @@
             <div class="item__form">
               <label for="senha_seg">Senha</label>
               <input
+                required
                 type="password"
                 id="senha_seg"
                 name="senha_seg"
@@ -219,6 +244,7 @@
               <h4>SSH</h4>
               <div class="radio__options">
                 <input
+                  required
                   type="radio"
                   id="habilitar_ssh"
                   name="aut_ssh"
@@ -226,6 +252,7 @@
                 />
                 <label for="habilitar_ssh">Habilitar</label>
                 <input
+                  required
                   type="radio"
                   id="desabilitar_ssh"
                   name="aut_ssh"
@@ -239,6 +266,7 @@
               <h4>Telnet</h4>
               <div class="radio__options">
                 <input
+                  required
                   type="radio"
                   id="habilitar_telnet"
                   name="aut_tnt"
@@ -246,6 +274,7 @@
                 />
                 <label for="habilitar_telnet">Habilitar</label>
                 <input
+                  required
                   type="radio"
                   id="desabilitar_telnet"
                   name="aut_tnt"
@@ -257,10 +286,16 @@
 
             <div class="item__form">
               <label for="clock">Clock</label>
-              <input type="time" id="clock" name="clock" class="valor__input" />
+              <input
+                required
+                type="time"
+                id="clock"
+                name="clock"
+                class="valor__input"
+              />
             </div>
 
-            <button class="btn__form" id="btn__seg" data-form="4">
+            <button class="btn__form" id="btn--4" data-form="4">
               Conectar
             </button>
           </form>

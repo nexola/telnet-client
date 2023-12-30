@@ -1,5 +1,5 @@
 // Seletores
-const btnForm = document.querySelectorAll(".btn__form");
+const listaBtn = document.querySelectorAll(".btn__form");
 const sections = document.querySelectorAll("section");
 const menuSection = document.querySelector("#menu--section");
 const allInputs = document.querySelectorAll(".valor__input");
@@ -8,129 +8,136 @@ const inputVlan = document.querySelector("#vlan");
 const itemVlan = document.querySelector(".item__vlan");
 const itemForm = document.querySelector(".item__form--vlan");
 const btnMenu = document.querySelectorAll("#menu--section button");
+const abas = menuSection.querySelectorAll("button");
+const inputIp = document.getElementById("ip");
 
-let itensVlan = {};
-let entries = {};
+class App {
+  itensVlan = new Set();
+  entries = {};
 
-const init = function () {
-  coletarValores(btnForm);
-  mudarAba(sections, menuSection);
-  addVlan(itemVlan, inputVlan);
-};
+  constructor() {
+    menuSection.addEventListener("click", this.clickMudarAba.bind(this));
+    listaBtn.forEach((btn) =>
+      btn.addEventListener("click", this.coletarValores.bind(this))
+    );
+    btnVlan.addEventListener("click", this.addVlan.bind(this));
+    itemForm.addEventListener("click", this.removeVlan.bind(this));
 
-// Funções auxiliares
-const zerarInputs = function () {
-  allInputs.forEach((i) => (i.value = null));
-};
+    inputIp.focus();
+  }
 
-// Coletando valores dos inputs
-const coletarValores = function (listaBtn) {
-  listaBtn.forEach((btn) =>
-    btn.addEventListener("click", function (e) {
-      console.log(entries);
-      console.log(itensVlan);
-      e.preventDefault();
+  zerarInputs() {
+    allInputs.forEach((i) => (i.value = null));
+  }
 
-      if (entries) {
-        for (const key in entries) {
-          delete entries[key];
-        }
+  coletarValores(e) {
+    const validInputs = (...inputs) => inputs.every((inp) => inp.value);
+
+    const allPositive = (...inputs) =>
+      inputs
+        .filter((inp) => Number.isFinite(+inp.value))
+        .every((inp) => +inp.value > 0);
+
+    e.preventDefault();
+
+    const clickedEl = e.target.closest(".btn__form");
+
+    if (!clickedEl) {
+      return;
+    }
+
+    console.log(this.entries);
+    console.log(this.itensVlan);
+
+    if (this.entries) {
+      for (const key in this.entries) {
+        delete this.entries[key];
       }
+    }
 
-      const clicked = e.target;
+    const inputs = document.querySelectorAll(
+      `.section__${clickedEl.dataset.form} .valor__input`
+    );
 
-      const inputs = document.querySelectorAll(
-        `.section__${clicked.dataset.form} .valor__input`
+    if (!validInputs(...inputs) || !allPositive(...inputs)) {
+      return alert("Os valores precisam ser positivos e/ou não nulos");
+    }
+
+    inputs.forEach((i) => {
+      this.entries[`${i.id}`] = i.value;
+    });
+
+    if (clickedEl.getAttribute("id") === "btn--2") {
+      if (this.itensVlan.size === 0) {
+        this.itensVlan = document.getElementById("vlan").value;
+      }
+      this.entries["vlan"] = this.itensVlan;
+    }
+
+    if (clickedEl.getAttribute("id") === "btn--4") {
+      const radioSSH = document.querySelector("input[name='aut_ssh']:checked");
+      const radioTelnet = document.querySelector(
+        'input[name="aut_tnt"]:checked'
       );
 
-      inputs.forEach((i) => {
-        entries[`${i.id}`] = i.value;
-      });
-
-      switch (clicked.getAttribute("id")) {
-        case "btn__seg":
-          const radioSSH = document.querySelector(
-            "input[name='aut_ssh']:checked"
-          );
-          const radioTelnet = document.querySelector(
-            'input[name="aut_tnt"]:checked'
-          );
-
-          if (radioSSH && radioTelnet) {
-            entries[`${radioSSH.getAttribute("name")}`] = radioSSH.value;
-            entries[`${radioTelnet.getAttribute("name")}`] = radioTelnet.value;
-          }
-          break;
-
-        case "btn--2":
-          addVlan(itemVlan, inputVlan);
-          entries["vlan"] = itensVlan;
-
-        default:
-          break;
+      if (radioSSH && radioTelnet) {
+        this.entries[`${radioSSH.getAttribute("name")}`] = radioSSH.value;
+        this.entries[`${radioTelnet.getAttribute("name")}`] = radioTelnet.value;
       }
+    }
 
-      zerarInputs();
-    })
-  );
-};
+    this.zerarInputs();
+  }
 
-// Mudando aba
-const mudarAba = function (secoes, menu) {
-  const alternarAba = function (slide) {
-    secoes.forEach((s) => s.classList.remove("section__ativo"));
+  mudarAba(abaAtiva) {
+    sections.forEach((s) => s.classList.remove("section__ativo"));
     btnMenu.forEach((b) => b.classList.remove("btn__ativo"));
     const btnAtivo = document.querySelector(
-      `#menu--section button[data-slide="${slide.dataset.slide}"]`
+      `#menu--section button[data-slide="${abaAtiva.dataset.slide}"]`
     );
+    console.log(abaAtiva);
     btnAtivo.classList.add("btn__ativo");
-    slide.classList.add("section__ativo");
-    zerarInputs();
-  };
+    abaAtiva.classList.add("section__ativo");
+    this.zerarInputs();
+  }
 
-  menu.addEventListener("click", function (e) {
+  clickMudarAba(e) {
     e.preventDefault();
 
     const clicked = e.target;
     const abaAtiva = document.querySelector(
       `.section__${clicked.dataset.slide}`
     );
-    const abas = menu.querySelectorAll("button");
 
     abas.forEach((a) => {
       if (clicked !== a) {
         return;
       }
-      alternarAba(abaAtiva);
+      this.mudarAba(abaAtiva);
     });
-  });
-};
+  }
 
-// Adicionando múltiplos vlan
-const addVlan = function (divInput, input) {
-  let itens = new Set();
+  addHTMLVlan(valor) {
+    const txt = `
+    <div class="item__vlan" data-valor="${valor}">
+      <h3>${valor}</h3>
+      <a href="" class="remove__vlan">x</a>
+    </div>`;
+    itemVlan.insertAdjacentHTML("beforebegin", txt);
+  }
 
-  const addHTMLVlan = function (valor) {
-    const txt = `<div class="item__vlan" data-valor="${valor}">
-  <h3>${valor}</h3>
-  <a href="" class="remove__vlan">x</a>
-  </div>`;
-    divInput.insertAdjacentHTML("beforebegin", txt);
-  };
-
-  btnVlan.addEventListener("click", function (e) {
+  addVlan(e) {
     e.preventDefault();
 
-    if (input.value && !itens.has(input.value)) {
-      itens.add(input.value);
-      console.log(itens);
-      addHTMLVlan(input.value);
-      input.value = null;
-      itensVlan = itens;
+    if (inputVlan.value && !this.itensVlan.has(inputVlan.value)) {
+      this.itensVlan.add(inputVlan.value);
+      console.log(itemVlan);
+      this.addHTMLVlan(inputVlan.value);
+      inputVlan.value = null;
     }
-  });
+  }
 
-  itemForm.addEventListener("click", function (e) {
+  removeVlan(e) {
     e.preventDefault();
 
     let clicked = e.target;
@@ -141,16 +148,12 @@ const addVlan = function (divInput, input) {
 
     let divClicked = clicked.closest("div");
 
-    itens.delete(divClicked.dataset.valor);
-
-    itensVlan = itens;
+    this.itensVlan.delete(divClicked.dataset.valor);
 
     divClicked.parentNode.removeChild(divClicked);
-  });
-
-  if (itens.size === 0) {
-    itensVlan = document.getElementById("vlan").value;
   }
-};
+}
 
-init();
+const app = new App();
+
+console.log(app.entries);

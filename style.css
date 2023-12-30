@@ -3,6 +3,7 @@
 :root {
   --var-primary: #5e5ce6;
   --var-primary-hover: #4341cf;
+  --var-primary-onclick: #1b19ac;
   --var-global: #131313;
   --var-exclude: #ff7a55;
   --var-input: #1f2226;
@@ -87,11 +88,11 @@ input[type="number"] {
 
 #menu--section button:hover {
   transition: 0.2s ease-in-out;
-  background-color: var(--var-primary);
+  background-color: var(--var-primary-hover);
 }
 
 #menu--section .btn__ativo {
-  background-color: var(--var-primary-hover);
+  background-color: var(--var-primary);
   transform: translateY(-12px);
   border-radius: 4px;
 }
@@ -184,6 +185,10 @@ select {
 .btn__form:hover {
   background-color: var(--var-primary-hover);
   transition: 0.2s ease-in-out;
+}
+
+.btn__form:active {
+  background-color: var(--var-primary-onclick);
 }
 
 section {
